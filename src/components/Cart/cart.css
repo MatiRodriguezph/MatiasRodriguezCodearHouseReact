@@ -1,0 +1,42 @@
+#carritoContainer hr{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#itemCarrito{
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#itemCarrito h4{
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+#btnQuitarCarrito{
+    padding: 0px 20px 0px 20px;
+    margin-left: 30px;
+    height: 50px;
+}
+
+#btnIncrementar, #btnReducir{
+    padding: 0px 20px 0px 20px;
+    height: 50px;
+}
+
+#btnVaciarCarrito{
+    display: none;
+    margin: 30px;
+}
+
+#contadorInput{
+    padding: 12px;
+    margin-top: 15px;
+    border: solid 1px lightgray;
+}

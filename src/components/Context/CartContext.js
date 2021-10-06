@@ -37,15 +37,11 @@ export const ProviderCarrito = ({children}) => {
                 arrayProductos.splice(indice,1)
             }
         })
-        console.log(arrayProductos)
-        console.log(contador)
     }
 
     const clearCart = () => {
         setArrayProductos([])
         setContador(0)
-        console.log(arrayProductos)
-        console.log(contador)
     }
 
     const isInCart = itemId => {

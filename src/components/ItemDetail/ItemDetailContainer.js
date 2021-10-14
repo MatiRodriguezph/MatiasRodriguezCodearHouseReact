@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import { arrayProductos } from "../../datos";
+import { firestore } from "../../firebase";
 
 const ItemDetailContainer = () => {
 
     const [producto, setProducto] = useState({})
     const parametros = useParams()
 
-    //console.log(props)
-
     useEffect(() => {
+        //Referencia de la base de datos
+        const db = firestore
 
-        const promesa = new Promise((resolve, reject) => {
-            resolve(arrayProductos)
-        })
-        
-        promesa.then(res => {
-            setProducto(res.find(r => r.id == parametros.id))
-        })
+        //obtener colección de productos
+        const coleccion = db.collection("productos")
 
+        //consulta --> es una promesa
+        const consulta = coleccion.doc(parametros.id).get()
+        consulta
+            .then(res => setProducto(res.data()))
+            .catch(err => console.log(err))
     }, [])
 
     return (

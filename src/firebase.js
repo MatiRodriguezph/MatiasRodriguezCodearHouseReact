@@ -19,3 +19,4 @@ const app = firebase.initializeApp(firebaseConfig);
 
 //Tener la referencia de la base de datos para importarla en el resto de la app
 export const firestore = firebase.firestore(app)
+export const Timestamp = firebase.firestore.Timestamp;

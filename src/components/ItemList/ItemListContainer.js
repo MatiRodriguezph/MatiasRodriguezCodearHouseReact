@@ -11,12 +11,13 @@ const ItemListContainer = () => {
     const parametros = useParams()
 
     useEffect(() => {
-
+        //Referencia de la base de datos
         const db = firestore
 
-
+        //obtener colección de productos
         const coleccion = db.collection("productos")
-        
+
+        //consulta --> es una promesa
         let consulta
         if (!parametros.id) consulta = coleccion.get()
         if (parametros.id == 1) consulta = coleccion.where("categoryId", "==", "1").get()

@@ -8,15 +8,17 @@ const ItemCountCart = ({cantidadAgregada, indice}) => {
     const carrito = useContext(contextoCarrito)
 
     function aumentarContador(){
-        setContador(contador+1)
-        carrito.setContador(contador+1)
-        carrito.arrayProductos[indice].cantidadComprada = contador+1
+        if (contador < carrito.arrayProductos[indice].stock){
+            setContador(contador+1)
+            carrito.setContador(carrito.contador+1)
+            carrito.arrayProductos[indice].cantidadComprada = contador+1
+        }
     }
 
     function reducirContador(){
         if (contador > 1){
             setContador(contador-1)
-            carrito.setContador(contador-1)
+            carrito.setContador(carrito.contador-1)
             carrito.arrayProductos[indice].cantidadComprada = contador-1
         }
     }

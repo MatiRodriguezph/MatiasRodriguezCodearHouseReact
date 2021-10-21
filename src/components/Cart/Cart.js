@@ -1,15 +1,54 @@
 import { contextoCarrito } from '../Context/CartContext'
-import { useContext, useEffect } from 'react'
-import { Link } from "react-router-dom"
+import { useContext, useEffect, useState } from 'react'
+import { Link, useHistory } from "react-router-dom"
+import { firestore, Timestamp } from "../../firebase";
 import "./cart.css"
 import Button from 'react-bootstrap/Button'
+import Modal from "react-bootstrap/Modal"
+import Spinner from 'react-bootstrap/esm/Spinner';
 import ItemCountCart from './ItemCountCart'
 
+
 const Cart = () => {
+    
+    const [smShow, setSmShow] = useState(false);
+    
+    const [formShow, setFormShow] = useState(false);
+    const handleClose = () => setFormShow(false);
+    const handleShow = () => setFormShow(true);
+
+    const [ordenId, setOrdenId] = useState()
 
     const carrito = useContext(contextoCarrito)
+    let history = useHistory()
 
     let montoTotal = 0
+
+    function crearNuevaOrden(nombre, telefono, email){
+        const db = firestore
+        const coleccion = db.collection("ordenes")
+
+        const nuevaOrden = {
+            buyer: {
+                name: nombre,
+                phone: telefono,
+                email: email
+            },
+            items: carrito.arrayProductos,
+            date: Timestamp.now(),
+            total: montoTotal
+        }
+
+        const consulta = coleccion.add(nuevaOrden)
+        consulta.then(res => {
+            setOrdenId(res.id)
+            document.getElementById("spinnerModal").style.display = "none"
+        })
+
+        carrito.clearCart()
+        document.getElementById("siHayElementos").style.display = "none"
+        document.getElementById("siNoHayElementos").style.display = "block"
+    }
 
     for (const producto of carrito.arrayProductos) {
         if (producto.cantidadComprada != 0){
@@ -50,7 +89,61 @@ const Cart = () => {
                     }}>
                     Vaciar carrito
                 </Button>
-                <Button variant="ok" id="btnTerminarCompra">Terminar compra</Button>
+                <Button variant="ok" id="btnTerminarCompra" onClick={() => {
+                        setFormShow(true)
+                    }}>
+                    Terminar compra
+                </Button>
+
+                <Modal
+                    size="sm"
+                    show={formShow}
+                    onHide={() => setFormShow(false)}
+                    aria-labelledby="example-modal-sizes-title-sm"
+                >
+                    <Modal.Header>
+                        <Modal.Title id="example-modal-sizes-title-sm">
+                            Ingrese sus datos
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body id="modalFormularioCuerpo">
+                        <form id="formularioCompra">
+                            <input type="text" placeholder="Nombre" id="inputNombre"></input>
+                            <input type="phone" placeholder="Teléfono" id="inputTelefono"></input>
+                            <input type="email" placeholder="E-mail" id="inputEmail"></input>
+                        </form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Cancelar
+                        </Button>
+                        <Button variant="primary" onClick={() => {
+                                handleClose()
+                                crearNuevaOrden(document.getElementById("inputNombre").value, document.getElementById("inputTelefono").value, document.getElementById("inputEmail").value)
+                                setSmShow(true)
+                            }}>
+                            Confirmar compra
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+                <Modal
+                    id="modalCompraConfirmada"
+                    size="sm"
+                    show={smShow}
+                    onHide={() => setSmShow(false)}
+                    aria-labelledby="example-modal-sizes-title-sm"
+                >
+                    <Modal.Header closeButton onClick={() => history.push("/")}>
+                        <Modal.Title id="example-modal-sizes-title-sm">
+                            ¡Compra confirmada!
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Comprobante N°: {ordenId}
+                        <br/><Spinner id="spinnerModal" animation="grow" />
+                    </Modal.Body>
+                </Modal>
             </div>
         </div>
     )

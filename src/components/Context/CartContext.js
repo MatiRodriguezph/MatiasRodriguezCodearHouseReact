@@ -1,4 +1,4 @@
-import { children, createContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const contextoCarrito = createContext()
 
@@ -7,10 +7,7 @@ const {Provider} = contextoCarrito
 export const ProviderCarrito = ({children}) => {
     
     const [arrayProductos, setArrayProductos] = useState([])
-    
-    //El estado "Contador" sirve para llevar un registro de la cantidad TOTAL
-    //de elementos agregados al carrito. Se usa para ir actualizando el
-    //badge del CartWidget
+
     const [contador, setContador] = useState(0)
 
     let arrayAuxiliar = []

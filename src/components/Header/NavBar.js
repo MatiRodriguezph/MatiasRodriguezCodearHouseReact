@@ -12,7 +12,7 @@ const NavBar = () => {
             <Container className="align-items-center">
             <Container>
                     <Link to="/">
-                        <h1>Servicio tecnico "Mexico" en Buenos Aires</h1>
+                        <h1>Servicio tecnico</h1>
                         <h3 className="fs-5">Tienda de Notebooks</h3>
                     </Link>
                 </Container>

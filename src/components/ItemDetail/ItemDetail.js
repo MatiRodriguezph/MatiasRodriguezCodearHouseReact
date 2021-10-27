@@ -2,11 +2,12 @@ import ItemCount from "../ItemCount/ItemCount"
 import { useContext } from "react"
 import { contextoCarrito } from "../Context/CartContext"
 
+
 const ItemDetail = (props) => {
 
     const carrito = useContext(contextoCarrito)
     
-    let {id, title, categoryId, description, price, stock, pictureUrl, cantidadComprada} = props.producto
+    let {id, title, categoryId, description, price, stock, pictureUrl, cantidadComprada} = props.productos
 
     const agregarAlCarrito = (cantidadAgregadaAlCarrito) => {    
         cantidadComprada = cantidadAgregadaAlCarrito

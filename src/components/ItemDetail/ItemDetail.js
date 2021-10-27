@@ -2,12 +2,11 @@ import ItemCount from "../ItemCount/ItemCount"
 import { useContext } from "react"
 import { contextoCarrito } from "../Context/CartContext"
 
-
 const ItemDetail = (props) => {
 
     const carrito = useContext(contextoCarrito)
     
-    let {id, title, categoryId, description, price, stock, pictureUrl, cantidadComprada} = props.productos
+    let {id, title, categoryId, description, price, stock, pictureUrl, cantidadComprada} = props.producto;
 
     const agregarAlCarrito = (cantidadAgregadaAlCarrito) => {    
         cantidadComprada = cantidadAgregadaAlCarrito
@@ -18,7 +17,7 @@ const ItemDetail = (props) => {
         <div id="itemDetailDiv">
             <h1>{title}</h1>
             <hr/>
-            <img src={pictureUrl}></img>
+            <img src={pictureUrl} alt={title}></img>
             <p>{description}</p>
             <h3>Precio: $ {price}</h3>
             <h4>Unidades disponibles: {stock}</h4>

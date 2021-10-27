@@ -1,5 +1,4 @@
 import Card from "react-bootstrap/Card"
-import Button from "react-bootstrap/Button"
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
@@ -25,7 +24,7 @@ const Item = (props) => {
                     <span>Precio: $ {price}</span><br/>
                     <span>Stock disponible: {stock}</span>
                 </Card.Text>
-                <div class="d-flex align-items-baseline">
+                <div className="d-flex align-items-baseline">
                     <ItemCount stock={stock} initial={1} onAdd={(cantidad) => agregarAlCarrito(cantidad)}/>
                 </div>
             </Card.Body>

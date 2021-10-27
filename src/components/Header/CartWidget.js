@@ -11,8 +11,8 @@ const CartWidget = () => {
     return (
         <Link to="/cart" className="nav-link">
             <Button variant="turquesa">
-                <i class="bi bi-cart"></i>
-                <Badge pill bg="primary" text="light" className="ms-2">{contadorCarrito.contador != 0 ? contadorCarrito.contador : null}</Badge>
+                <i className="bi bi-cart"></i>
+                <Badge pill bg="primary" text="light" className="ms-2">{contadorCarrito.contador !== 0 ? contadorCarrito.contador : null}</Badge>
             </Button>
         </Link>
     )

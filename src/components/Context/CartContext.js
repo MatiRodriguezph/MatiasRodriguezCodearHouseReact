@@ -16,7 +16,7 @@ export const ProviderCarrito = ({children}) => {
     const addItem = (item, quantity) => {
         if (isInCart(item.id)){
             for (const producto of arrayProductos) {
-                if (producto.id == item.id) producto.cantidadComprada += quantity
+                if (producto.id === item.id) producto.cantidadComprada += quantity
             }
         } else {
             arrayAuxiliar = arrayProductos
@@ -29,7 +29,7 @@ export const ProviderCarrito = ({children}) => {
 
     const removeItem = itemId => {
         arrayProductos.forEach((elemento, indice, array) => {
-            if (elemento.id == itemId) {
+            if (elemento.id === itemId) {
                 setContador(contador - elemento.cantidadComprada)
                 arrayProductos.splice(indice,1)
             }
@@ -42,7 +42,7 @@ export const ProviderCarrito = ({children}) => {
     }
 
     const isInCart = itemId => {
-        if (arrayProductos.find(elemento => elemento.id == itemId)) return true;
+        if (arrayProductos.find(elemento => elemento.id === itemId)) return true;
         else return false
     }
 

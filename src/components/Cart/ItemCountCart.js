@@ -1,6 +1,5 @@
 import { useState, useContext } from "react"
 import { contextoCarrito } from '../Context/CartContext'
-import Button from "react-bootstrap/Button"
 
 const ItemCountCart = ({cantidadAgregada, indice}) => {
     

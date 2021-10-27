@@ -17,10 +17,10 @@ const ItemDetailContainer = () => {
         const coleccion = db.collection("productos")
 
         //consulta --> es una promesa
-        const consulta = coleccion.doc(parametros.id).get()
+        const consulta = coleccion.where("id", "==", parametros.id).get()
         consulta
             .then(res => {
-                setProducto(res.data())
+                setProducto(res.docs[0].data())
                 document.getElementById("spinner").style.display = "none"
             })
             .catch(err => console.log(err))

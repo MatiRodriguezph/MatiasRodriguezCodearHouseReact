@@ -18,12 +18,12 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
     
     return (
-        <div id="item" class="d-flex justify-content-evenly align-items-center">
-            <button class="btn btn-primary" id="incrementar" onClick={() => aumentarContador()}>
+        <div id="item" className="d-flex justify-content-evenly align-items-center">
+            <button className="btn btn-primary" id="incrementar" onClick={() => aumentarContador()}>
                 +
             </button>
             <p id="contadorPlace">{contador}</p>
-            <button class="btn btn-primary" id="decrementar" onClick={() => reducirContador()}>
+            <button className="btn btn-primary" id="decrementar" onClick={() => reducirContador()}>
                 -
             </button>
             <Button variant="primary" id="botonItemDetail" onClick={() => onAdd(contador)}>

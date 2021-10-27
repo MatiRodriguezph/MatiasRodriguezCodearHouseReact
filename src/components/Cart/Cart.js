@@ -15,7 +15,6 @@ const Cart = () => {
     
     const [formShow, setFormShow] = useState(false);
     const handleClose = () => setFormShow(false);
-    const handleShow = () => setFormShow(true);
 
     const [ordenId, setOrdenId] = useState()
 
@@ -43,6 +42,8 @@ const Cart = () => {
         consulta.then(res => {
             setOrdenId(res.id)
             document.getElementById("spinnerModal").style.display = "none"
+        }).catch((error) => {
+            console.error("Error agregar ", error)
         })
 
         carrito.clearCart()
@@ -51,13 +52,13 @@ const Cart = () => {
     }
 
     for (const producto of carrito.arrayProductos) {
-        if (producto.cantidadComprada != 0){
+        if (producto.cantidadComprada !== 0){
             montoTotal += producto.cantidadComprada * producto.price
         }
     }
     
     useEffect(() => {
-        if (carrito.arrayProductos.length != 0){
+        if (carrito.arrayProductos.length !== 0){
             document.getElementById("siHayElementos").style.display = "flex"
             document.getElementById("siNoHayElementos").style.display = "none"
         }
@@ -70,7 +71,7 @@ const Cart = () => {
                 <h5>{element.title} - $ {element.price}</h5>
                 <ItemCountCart cantidadAgregada={element.cantidadComprada} indice={index}/>
                 <Button variant="danger" id="btnQuitarCarrito" onClick={() => {
-                        if (carrito.arrayProductos.length == 1){
+                        if (carrito.arrayProductos.length === 1){
                             document.getElementById("siHayElementos").style.display = "none"
                             document.getElementById("siNoHayElementos").style.display = "block"
                         }

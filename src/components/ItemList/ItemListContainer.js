@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
-import { arrayProductos } from "../../datos";
 import Spinner from 'react-bootstrap/Spinner';
 import { firestore } from "../../firebase";
 
@@ -20,15 +19,14 @@ const ItemListContainer = () => {
         //consulta --> es una promesa
         let consulta
         if (!parametros.id) consulta = coleccion.get()
-        if (parametros.id == 1) consulta = coleccion.where("categoryId", "==", "1").get()
-        if (parametros.id == 2) consulta = coleccion.where("categoryId", "==", "2").get()
-        if (parametros.id == 3) consulta = coleccion.where("categoryId", "==", "3").get()
+        if (parametros.id === "1") consulta = coleccion.where("categoryId", "==", "1").get()
+        if (parametros.id === "2") consulta = coleccion.where("categoryId", "==", "2").get()
+        if (parametros.id === "3") consulta = coleccion.where("categoryId", "==", "3").get()
 
         consulta
             .then(res => {
                 const documento = res.docs
                 let auxiliarProductos = []
-
                 documento.forEach(producto => {
                     const consultaFinal = {
                         id: producto.id,

@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from "react-bootstrap/Modal"
 import Spinner from 'react-bootstrap/esm/Spinner';
 import ItemCountCart from './ItemCountCart'
+import CartTiket from '../CartTiket/CartTiket';
 
 
 const Cart = () => {
@@ -62,15 +63,17 @@ const Cart = () => {
             document.getElementById("siHayElementos").style.display = "flex"
             document.getElementById("siNoHayElementos").style.display = "none"
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <div id="carritoContainer">
-            <h1 id="siNoHayElementos">No hay productos agregados al carrito. <Link to="/">Volver a HOME</Link></h1>
+            <p id="siNoHayElementos" className="Style-p-No-Productos">No hay productos agregados al carrito. <Link to="/">Retornar a inicio</Link></p>
+            <CartTiket carrito={carrito} />
             {carrito.arrayProductos.map((element, index) => <div id="itemCarrito" key={element.id}>
                 <h5>{element.title} - $ {element.price}</h5>
                 <ItemCountCart cantidadAgregada={element.cantidadComprada} indice={index}/>
-                <Button variant="danger" id="btnQuitarCarrito" onClick={() => {
+                <Button variant="danger" className="m-3" id="btnQuitarCarrito" onClick={() => {
                         if (carrito.arrayProductos.length === 1){
                             document.getElementById("siHayElementos").style.display = "none"
                             document.getElementById("siNoHayElementos").style.display = "block"
@@ -83,14 +86,14 @@ const Cart = () => {
             <hr/>
             <div id="siHayElementos">
                 <h2>TOTAL: ${montoTotal}</h2>
-                <Button variant="danger" id="btnVaciarCarrito" onClick={() => {
+                <Button className="m-5" variant="danger" id="btnVaciarCarrito" onClick={() => {
                         carrito.clearCart()
                         document.getElementById("siHayElementos").style.display = "none"
                         document.getElementById("siNoHayElementos").style.display = "block" 
                     }}>
                     Vaciar carrito
                 </Button>
-                <Button variant="ok" id="btnTerminarCompra" onClick={() => {
+                <Button className="m-5" variant="success" id="btnTerminarCompra" onClick={() => {
                         setFormShow(true)
                     }}>
                     Terminar compra

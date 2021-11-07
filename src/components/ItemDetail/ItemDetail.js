@@ -1,6 +1,7 @@
 import ItemCount from "../ItemCount/ItemCount"
 import { useContext } from "react"
 import { contextoCarrito } from "../Context/CartContext"
+import "./ItemDetail.css"
 
 const ItemDetail = (props) => {
 
@@ -17,7 +18,7 @@ const ItemDetail = (props) => {
         <div id="itemDetailDiv">
             <h1>{title}</h1>
             <hr/>
-            <img src={pictureUrl} alt={title}></img>
+            <img className="Style-Title-Detail" src={pictureUrl} alt={title}></img>
             <p>{description}</p>
             <h3>Precio: $ {price}</h3>
             <h4>Unidades disponibles: {stock}</h4>

@@ -7,6 +7,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+  --bs-rojitotranquilo: #c34949;
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -2162,8 +2163,8 @@ textarea.form-control-lg {
 
 .btn-danger {
   color: #000;
-  background-color: red;
-  border-color: red; }
+  background-color: var(--bs-rojitotranquilo);
+  border-color: var(--bs-rojitotranquilo); }
   .btn-danger:hover {
     color: #000;
     background-color: #ff2626;

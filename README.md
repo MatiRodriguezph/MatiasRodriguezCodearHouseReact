@@ -1,14 +1,55 @@
+#English version 
+
+
 #surf sandals manufactur/ my first app 
 *
 This app is created with e-commerce functionalities, it contains a detailed view of the items/products added to the data base. 
 It has a shopping cart, wich contains and keeps the state of the same visually in the right upper corner. 
 The functionality of review order is also added in the shopping section so that the user can check its shop in case of wanting to consult it; it gives back the number of units, name, value of the product and it gives you the oportunity to add more units.
 
+##Requirements to add to start the app
+*****
+
+Before instaling the process is necessary that you enter to the downlowded file of the app and place 
+"Cmd.exe" with the 
+
+-npm install
+
+command, which will install the local files that will allow us to start the app correctly. 
+We will verify the correct installation and version of it with the 
+
+"node-v" command. 
+
+There must be installed "react bootstrap" with the commands in the console:
+
+$npm install react-bootstrap bootstrap@5.1.3
+
+Which are going to provide the bootstrap library and thus be able to lift the requested styles in each component. 
+
+The next thing is install the "React Router DOM library" with the console commands:
+
+$npm i react-router-dom
+
+With this command the navigation fuction is enabled, which consists of defining routes, for a component to be visual when addressing the route in the browser. We can also navigate between routes, throught links and hooks, so that it can send an associated state to the navigated component.
+
+To bring the data that is in the database used in the project is necessary to install it in the "Firebase" library of google with the next commands in the console:
+
+$npm install firebase
+
+It will enable the data of the "e-commerce" app that will bring the items/products from the catalog and the orders that are used when making the tickets.
+
+##App author
+
+.Matias Nahuel Rodríguez Allende- Project creation and development 
+.CoderHouse tutors and teachers- Providing support and information. 
+
+##CC license, free distribution for the community.
+
 
 
 
 ****************************************
-Version en español:
+#Version en español:
 
 
 #Surf fabrica de ojotas / Mi primer app
@@ -49,6 +90,7 @@ $npm install firebase
 La misma habilitara los datos de la app "e-commerce" que traeran los items/productos del catalogo y los pedidos que se utilizan a la hora de realizar los tickets. 
 
 ##Autor de la app
+
 .Matias Nahuel Rodriguez Allende - Creacion y desarrollo de proyecto.
 .Tutores y profesores de CoderHouse - Brindando soporte e información. 
 

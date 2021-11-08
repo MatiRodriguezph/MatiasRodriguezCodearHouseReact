@@ -10,13 +10,11 @@ const ItemDetailContainer = () => {
     const parametros = useParams()
 
     useEffect(() => {
-        //Referencia de la base de datos
+        
         const db = firestore
 
-        //obtener colección de productos
         const coleccion = db.collection("productos")
 
-        //consulta --> es una promesa
         const consulta = coleccion.where("id", "==", parametros.id).get()
         consulta
             .then(res => {

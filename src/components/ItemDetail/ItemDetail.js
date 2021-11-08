@@ -21,7 +21,7 @@ const ItemDetail = (props) => {
             <img className="Style-Title-Detail" src={pictureUrl} alt={title}></img>
             <p>{description}</p>
             <h3>Precio: $ {price}</h3>
-            <h4>Unidades disponibles: {stock}</h4>
+            <h4>Unidades en stock: {stock}</h4>
             <ItemCount id ={id} stock={stock} initial={1} onAdd={agregarAlCarrito}/>
         </div>
     )

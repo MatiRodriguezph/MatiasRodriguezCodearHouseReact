@@ -30,7 +30,6 @@ body {
   margin-left: auto;
 }
 
-/* Menu */
 .hamburger {
   background: transparent;
   border: none;
@@ -111,26 +110,6 @@ body {
     }
   }
   
-  /* .menu-item a {
-    color: var(--dark);
-    display: block;
-    line-height: 30px;
-    margin: 0px 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    
-    &:hover {
-      color: lighten(var(--dark), 20);
-      text-decoration: underline;
-    }
-
-    @media screen and (max-width: 768px) {
-      font-size: 20px;
-      margin: 8px;
-    }
-  } */
-  
-  
 }
 
 .sub-nav {
@@ -149,16 +128,4 @@ body {
       box-sizing: border-box;
     }
 }
-/* 
- .nav__link {
-   &:hover + .sub-nav {
-        display:block;
 
- }
-}
-
-.sub-nav {
-  &:hover {
-    display:block;
-  } */
-/* } */
